@@ -1,6 +1,14 @@
 ''' render routes'''
 from flask import render_template
 import app
+from app.forms import LoginForm
+
+
+@app.app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Sign in', form=form)
+
 
 
 @app.app.route("/")
@@ -20,4 +28,4 @@ def index():
             'body': 'The Avengers movie was so cool!'
         }
     ]
-    return render_template('index.html', title='Home', user=user)
+    return render_template('index.html', title='Home', user=user, posts=posts)
